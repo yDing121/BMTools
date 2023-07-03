@@ -3,6 +3,7 @@ from . import film
 from . import kg
 from . import stock
 from . import weather
+from . import weather2
 from . import wikipedia
 from . import wolframalpha
 from . import office

@@ -1,5 +1,8 @@
 import bmtools
 import os
+import sys
+sys.path.insert(0, "D:/Coding/Toolbench")
+import load_keys
 
 def run_tool_server():
     def load_weather_tool():
@@ -7,6 +10,13 @@ def run_tool_server():
         if not WEATHER_API_KEYS:
             raise RuntimeError("WEATHER_API_KEYS not provided, please register one from https://www.weatherapi.com/ and add it to environment variables.")
         server.load_tool("weather", {"subscription_key": WEATHER_API_KEYS})
+
+    # Clone of weather tool
+    def load_weather2_tool():
+        WEATHER_API_KEYS = os.environ.get('WEATHER_API_KEYS', None)
+        if not WEATHER_API_KEYS:
+            raise RuntimeError("WEATHER_API_KEYS not provided, please register one from https://www.weatherapi.com/ and add it to environment variables.")
+        server.load_tool("weather2", {"subscription_key": WEATHER_API_KEYS})
 
     # def load_database_tool():
     #     server.load_tool("database")
@@ -133,40 +143,51 @@ def run_tool_server():
     def load_gradio_tools():
         server.load_tool("gradio_tools")
 
+    # Load API keys
+    load_keys.load_OpenAI_key()
+    load_keys.load_weather_key()
+
+    print("KEYS LOADED")
+
     server = bmtools.ToolServer()
     print(server.list_tools())
 
     # tool_choice = input("Enter 'ALL' to load all tools, or enter the specific tools you want to load (comma-separated): ")
-    
-    load_weather_tool()
-    # load_database_tool()
-    # load_db_diag_tool()
-    load_chemical_prop_tool()
-    load_douban_tool()
-    load_wikipedia_tool()
-    # load_wikidata_tool()
-    load_wolframalpha_tool()
-    load_bing_search_tool()
-    load_office_ppt_tool()
-    load_alpha_vantage_tool()
-    load_map_tool()
-    load_rapidapi_tool()
-    # load_nllb_translation_tool()
-    # load_baidu_translation_tool()
-    load_tutorial_tool()
-    load_file_operation_tool()
-    load_meta_analysis_tool()
-    load_code_interpreter_tool()
-    load_arxiv_tool()
-    load_google_places_tool()
-    load_google_serper_tool()
-    load_python_tool()
-    load_sceneXplain_tool()
-    load_shell_tool()
-    load_image_generation_tool()
-    load_hugging_tools()
-    load_gradio_tools()
-    load_travel_tool()
+
+    """
+    TOOL LOADING HERE
+    """
+
+    load_weather2_tool()
+    # load_weather_tool()
+    # # load_database_tool()
+    # # load_db_diag_tool()
+    # load_chemical_prop_tool()
+    # load_douban_tool()
+    # load_wikipedia_tool()
+    # # load_wikidata_tool()
+    # load_wolframalpha_tool()
+    # load_bing_search_tool()
+    # load_office_ppt_tool()
+    # load_alpha_vantage_tool()
+    # load_map_tool()
+    # load_rapidapi_tool()
+    # # load_nllb_translation_tool()
+    # # load_baidu_translation_tool()
+    # load_tutorial_tool()
+    # load_file_operation_tool()
+    # load_meta_analysis_tool()
+    # load_code_interpreter_tool()
+    # load_arxiv_tool()
+    # load_google_places_tool()
+    # load_google_serper_tool()
+    # load_python_tool()
+    # load_sceneXplain_tool()
+    # load_shell_tool()
+    # load_image_generation_tool()
+    # load_hugging_tools()
+    # load_gradio_tools()
+    # load_travel_tool()
 
     server.serve()
 
