@@ -4,9 +4,11 @@ from bmtools.agent.singletool import STQuestionAnswerer
 from langchain.schema import AgentFinish
 import os
 import requests
+from my_utils.load_keys import load_key
 
 available_models = ["ChatGPT", "GPT-3.5"]
 DEFAULTMODEL = "ChatGPT" # "GPT-3.5"
+load_key("openai")
 
 tools_mappings = {
     "klarna": "https://www.klarna.com/",

@@ -160,8 +160,8 @@ def run_tool_server():
     TOOL LOADING HERE
     """
 
-    # load_weather2_tool()
-    load_weather_tool()
+    load_weather2_tool()
+    # load_weather_tool()
     # # load_database_tool()
     # # load_db_diag_tool()
     # load_chemical_prop_tool()
