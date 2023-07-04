@@ -4,6 +4,7 @@ from . import kg
 from . import stock
 from . import weather
 from . import weather2
+from . import chineseweather
 from . import wikipedia
 from . import wolframalpha
 from . import office

@@ -18,6 +18,13 @@ def run_tool_server():
             raise RuntimeError("WEATHER_API_KEYS not provided, please register one from https://www.weatherapi.com/ and add it to environment variables.")
         server.load_tool("weather2", {"subscription_key": WEATHER_API_KEYS})
 
+    # Weather tool for Chinese testing
+    def load_chineseweather_tool():
+        WEATHER_API_KEYS = os.environ.get('WEATHER_API_KEYS', None)
+        if not WEATHER_API_KEYS:
+            raise RuntimeError("WEATHER_API_KEYS not provided, please register one from https://www.weatherapi.com/ and add it to environment variables.")
+        server.load_tool("chineseweather", {"subscription_key": WEATHER_API_KEYS})
+
     # def load_database_tool():
     #     server.load_tool("database")
 
@@ -148,7 +155,6 @@ def run_tool_server():
     load_keys.load_key("weather")
     load_keys.load_key("wolfram")
 
-
     print("KEYS LOADED")
 
     server = bmtools.ToolServer()
@@ -161,6 +167,7 @@ def run_tool_server():
     """
 
     load_weather2_tool()
+    load_chineseweather_tool()
     # load_weather_tool()
     # # load_database_tool()
     # # load_db_diag_tool()
