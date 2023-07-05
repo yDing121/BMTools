@@ -32,6 +32,7 @@ from . import job_search
 from . import gradio_tools
 from . import travel
 from . import walmart
+from . import faq
 
 
 from .tool import Tool
