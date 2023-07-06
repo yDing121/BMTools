@@ -1,8 +1,6 @@
 import bmtools
 import os
-import sys
-sys.path.insert(0, "D:/Coding/Toolbench/src")
-import load_keys
+from my_utils import load_keys
 
 def run_tool_server():
     def load_weather_tool():
@@ -170,7 +168,7 @@ def run_tool_server():
     TOOL LOADING HERE
     """
 
-    # load_weather2_tool()
+    load_weather2_tool()
     # load_chineseweather_tool()
     load_faq_tool()
     # load_weather_tool()
