@@ -119,6 +119,7 @@ def run_tool_server():
 
     def load_google_serper_tool():
         SERPER_API_KEY = os.environ.get('SERPER_API_KEY', None)
+
         if not SERPER_API_KEY:
             raise RuntimeError("SERPER_API_KEY not provided, please register one from https://serper.dev and add it to environment variables.")
         server.load_tool("google_serper", {"subscription_key": SERPER_API_KEY})
@@ -156,6 +157,7 @@ def run_tool_server():
     load_keys.load_key("openai")
     load_keys.load_key("weather")
     load_keys.load_key("wolfram")
+    load_keys.load_key("serper")
 
     print("KEYS LOADED")
 
@@ -168,17 +170,17 @@ def run_tool_server():
     TOOL LOADING HERE
     """
 
-    load_weather2_tool()
+    # load_weather2_tool()
     # load_chineseweather_tool()
     load_faq_tool()
-    # load_weather_tool()
+    load_weather_tool()
     # # load_database_tool()
     # # load_db_diag_tool()
     # load_chemical_prop_tool()
     # load_douban_tool()
     # load_wikipedia_tool()
     # # load_wikidata_tool()
-    # load_wolframalpha_tool()
+    load_wolframalpha_tool()
     # load_bing_search_tool()
     # load_office_ppt_tool()
     # load_alpha_vantage_tool()
@@ -192,7 +194,7 @@ def run_tool_server():
     # load_code_interpreter_tool()
     # load_arxiv_tool()
     # load_google_places_tool()
-    # load_google_serper_tool()
+    load_google_serper_tool()
     # load_python_tool()
     # load_sceneXplain_tool()
     # load_shell_tool()

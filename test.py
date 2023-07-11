@@ -1,7 +1,9 @@
 from bmtools.agent.singletool import load_single_tools, STQuestionAnswerer
+from my_utils.load_keys import load_key
 
 # Langchain
 tool_name, tool_url = 'weather',  "http://127.0.0.1:8079/tools/weather/"
+load_key("openai")
 tool_name, tool_config = load_single_tools(tool_name, tool_url)
 print(tool_name, tool_config)
 stqa =  STQuestionAnswerer()

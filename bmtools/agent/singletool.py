@@ -40,8 +40,8 @@ def import_all_apis(tool_json):
             all_apis.append(api)
     return all_apis
 
+
 def load_single_tools(tool_name, tool_url):
-    
     # tool_name, tool_url = "datasette", "https://datasette.io/"
     # tool_name, tool_url = "klarna", "https://www.klarna.com/"
     # tool_name, tool_url =  'chemical-prop',  "http://127.0.0.1:8079/tools/chemical-prop/"
@@ -61,7 +61,6 @@ def load_single_tools(tool_name, tool_url):
         raise RuntimeError("Your URL of the tool is invalid.")
 
     return tool_name, tool_config_json
-    
 
 
 class STQuestionAnswerer:
@@ -74,8 +73,7 @@ class STQuestionAnswerer:
 
         self.set_openai_api_key(openai_api_key)
         self.stream_output = stream_output
-        
-     
+
     
     def set_openai_api_key(self, key):
         logger.info("Using {}".format(self.llm_model))
