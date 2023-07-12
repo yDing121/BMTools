@@ -27,6 +27,10 @@ def run_tool_server():
     def load_faq_tool():
         server.load_tool("faq")
 
+    # Final answer tool
+    def load_no_tool():
+        server.load_tool("notool")
+
     # def load_database_tool():
     #     server.load_tool("database")
 
@@ -174,11 +178,12 @@ def run_tool_server():
     # load_chineseweather_tool()
     load_faq_tool()
     load_weather_tool()
+    load_no_tool()
     # # load_database_tool()
     # # load_db_diag_tool()
     # load_chemical_prop_tool()
     # load_douban_tool()
-    # load_wikipedia_tool()
+    load_wikipedia_tool()
     # # load_wikidata_tool()
     load_wolframalpha_tool()
     # load_bing_search_tool()

@@ -33,6 +33,7 @@ from . import gradio_tools
 from . import travel
 from . import walmart
 from . import faq
+from . import notool
 
 
 from .tool import Tool

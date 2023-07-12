@@ -1,16 +1,22 @@
-from langchain.llms import OpenAI
-from langchain import OpenAI, LLMChain
-from langchain.agents import ZeroShotAgent, AgentExecutor
 import importlib
 import json
 import os
 import requests
 import yaml
+import sys
+
+from langchain.llms import OpenAI
+from langchain import OpenAI, LLMChain
+from langchain.agents import ZeroShotAgent, AgentExecutor
+
 from bmtools.agent.apitool import Tool
 from bmtools.agent.singletool import STQuestionAnswerer
 from bmtools.agent.executor import Executor, AgentExecutorWithTranslation
 from bmtools import get_logger
 from bmtools.models.customllm import CustomLLM
+
+sys.path.insert(0, 'D:/Coding/ToolBench/data-generation')
+from answer.utils import prepare_queries, NAME2URL, MyZeroShotAgent, MyAgentExecutor, MyMRKLOutputParser, LogParser
 
 logger = get_logger(__name__)
 
@@ -88,7 +94,9 @@ class MTQuestionAnswerer:
             ai_role="Assistant",
             tools=self.tools_pool,
             llm=ChatOpenAI(temperature=0),
-            memory=vectorstore.as_retriever()
+            memory=vectorstore.as_retriever(),
+            # ## CHANGING PARSER HERE
+            # output_parser=MyMRKLOutputParser()
         )
         '''
         # 可以修改prompt来让模型表现更好，也可以修改tool的doc

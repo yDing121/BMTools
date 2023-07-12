@@ -64,7 +64,7 @@ def load_single_tools(tool_name, tool_url):
 
 
 class STQuestionAnswerer:
-    def __init__(self, openai_api_key = "", stream_output=False, llm='ChatGPT'):
+    def __init__(self, openai_api_key = "", stream_output=False, llm='ChatGPT', parser=-1):
         if len(openai_api_key) < 3: # not valid key (TODO: more rigorous checking)
             openai_api_key = os.environ.get('OPENAI_API_KEY')
 
@@ -73,6 +73,7 @@ class STQuestionAnswerer:
 
         self.set_openai_api_key(openai_api_key)
         self.stream_output = stream_output
+        self.parser = parser
 
     
     def set_openai_api_key(self, key):
@@ -113,6 +114,8 @@ class STQuestionAnswerer:
             logger.info("Full prompt template: {}".format(prompt.template))
             tool_names = [tool.name for tool in self.all_tools_map[name] ]
             agent = ZeroShotAgent(llm_chain=llm_chain, allowed_tools=tool_names)
+            if self.parser != -1:
+                agent.output_parser = parser
             if self.stream_output:
                 agent_executor = Executor.from_agent_and_tools(agent=agent, tools=self.all_tools_map[name] , verbose=True, return_intermediate_steps=return_intermediate_steps)
             else:
